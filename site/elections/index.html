@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elections map explorer | ArcGIS AI Components Beta</title>
+    <script
+      id="arcgis-sdk"
+      type="module"
+      src="https://js.arcgis.com/5.1.14/"
+    ></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <h1>Elections map explorer <span class="badge">AI Beta</span></h1>
+        <p>Explore voter turnout and polling stations using natural language.</p>
+      </div>
+      <a
+        href="https://government.maps.arcgis.com/home/item.html?id=6da63a7754d24748ac787aeaca12a8fc"
+        target="_blank"
+        rel="noopener noreferrer"
+      >About the elections map</a>
+    </header>
+
+    <main>
+      <section class="map-region" aria-label="Elections map">
+        <p id="map-status" class="status" role="status" aria-live="polite">
+          Loading the elections map...
+        </p>
+        <arcgis-map
+          id="elections-map"
+          item-id="6da63a7754d24748ac787aeaca12a8fc"
+        >
+          <arcgis-zoom slot="top-left"></arcgis-zoom>
+          <arcgis-expand slot="top-left">
+            <arcgis-legend></arcgis-legend>
+          </arcgis-expand>
+        </arcgis-map>
+      </section>
+
+      <aside class="assistant-region" aria-label="AI map assistant">
+        <div class="assistant-intro">
+          <h2>Ask about this map</h2>
+          <p>
+            Navigate, explore voter turnout and polling stations, or ask for help.
+            Charts, exports, and 3D navigation are not part of this demo.
+          </p>
+          <p>
+            Use the assistant's <strong>Sign in</strong> link with an eligible
+            ArcGIS Online organization account. A public map does not grant AI access.
+          </p>
+          <p id="assistant-status" class="status" role="status" aria-live="polite">
+            Loading the assistant. Sign-in and organization AI permissions are required.
+          </p>
+        </div>
+        <arcgis-assistant
+          id="elections-assistant"
+          reference-element="#elections-map"
+          heading="Voter turnout and polling stations"
+          description="Explore turnout by polling district, query polling stations, and get map help."
+          entry-message="Ask about the data in this elections map. Dates and polling information may not be current; verify with the election authority. AI responses may be inaccurate."
+          keep-suggested-prompts
+        >
+          <arcgis-assistant-navigation-agent></arcgis-assistant-navigation-agent>
+          <arcgis-assistant-data-exploration-agent></arcgis-assistant-data-exploration-agent>
+          <arcgis-assistant-help-agent></arcgis-assistant-help-agent>
+        </arcgis-assistant>
+      </aside>
+    </main>
+
+    <noscript>This example requires JavaScript to load the map and AI assistant.</noscript>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1f2937;
+  background: #f4f6f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border-bottom: 1px solid #d5dce3;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+}
+
+a {
+  color: #005a87;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  background: #e6f2fb;
+  color: #005a87;
+  font-size: 0.75rem;
+  vertical-align: middle;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 420px);
+  min-height: 0;
+}
+
+.map-region,
+.assistant-region {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.assistant-region {
+  background: #fff;
+  border-left: 1px solid #d5dce3;
+}
+
+.assistant-intro {
+  padding: 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #d5dce3;
+}
+
+.status {
+  margin: 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  background: #eef4f8;
+}
+
+.assistant-intro .status {
+  margin-top: 0.75rem;
+  padding: 0.65rem;
+}
+
+.status[data-state="error"] {
+  color: #8a1c13;
+  background: #fff0ec;
+  border-left: 3px solid #b42318;
+}
+
+arcgis-map,
+arcgis-assistant {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+@media (max-width: 760px) {
+  body {
+    height: auto;
+    min-height: 100%;
+    grid-template-rows: auto auto;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .map-region {
+    height: 55vh;
+    min-height: 320px;
+  }
+
+  .assistant-region {
+    height: 85vh;
+    min-height: 640px;
+    border-left: 0;
+    border-top: 1px solid #d5dce3;
+  }
+}
